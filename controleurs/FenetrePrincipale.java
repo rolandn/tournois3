@@ -26,7 +26,7 @@ public class FenetrePrincipale extends Application
             FXMLLoader loader = new FXMLLoader(new URL("file:vues/FenetrePrincipale.fxml"));
             loader.setController(this);
             Scene scene = new Scene(loader.load(), 750, 500, Color.WHITE);
-            scene.getStylesheets().add("vues/stylesCSS.css");
+            //scene.getStylesheets().add("vues/stylesCSS.css");
             fenetre.setScene(scene);
         }
         catch(Exception e)

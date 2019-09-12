@@ -20,7 +20,7 @@ public class BaseFenetre extends Stage
             FXMLLoader loader = new FXMLLoader(new URL("file:vues/" + vue));
             loader.setController(this);
             Scene scene = new Scene(loader.load(), largeur, hauteur);
-            scene.getStylesheets().add("vues/stylesCSS.css");
+           // scene.getStylesheets().add("vues/stylesCSS.css");
             setScene(scene);
         }
         catch(Exception e)
