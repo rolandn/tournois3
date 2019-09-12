@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="14500" prefWidth="17000">
+
+
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="Listes">
+                    <items>
+                        <MenuItem text="Lister les arbitres" onAction="#MListerArbitres" />
+                        <MenuItem text="Lister les joueurs" />
+                        <MenuItem text="Lister les tables"/>
+                    </items>
+                </Menu>
+                <Menu text="Résultats">
+                    <items>
+                        <MenuItem text="Lister les résultats" />
+                        <MenuItem text="Ajouter un résultat d'un match" />
+                    </items>
+                </Menu>
+                <Menu text="Quitter">
+                    <items>
+                        <MenuItem text="Quitter le programme" onAction="#MQuitter" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+
+</AnchorPane>

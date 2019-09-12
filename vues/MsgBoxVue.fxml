@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+
+            prefHeight="4000" prefWidth="6000">
+
+
+    <children>
+        <HBox AnchorPane.topAnchor="15" AnchorPane.leftAnchor="150" spacing="200" alignment="CENTER">
+            <children>
+            <!--    <ImageView fx:id="IVImage" AnchorPane.topAnchor="25" AnchorPane.rightAnchor="15" />  -->
+                <Label fx:id="LMsgErreur" text="" />
+            </children>
+        </HBox>
+        <Button fx:id="BFermer" prefWidth="80" prefHeight="20" onAction="#BFermer" text="Fermer"
+                AnchorPane.rightAnchor="15" AnchorPane.bottomAnchor="15" />
+    </children>
+
+
+</AnchorPane>
