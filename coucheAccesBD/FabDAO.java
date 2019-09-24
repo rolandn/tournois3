@@ -89,11 +89,20 @@ public class FabDAO
         }
     }
     /**
-     * méthode qui fournit une instance d'EleveDAO
+ * méthode qui fournit une instance d'ArbitreDAO
+ * @return l'instance d'EleveDAO
+ */
+public ArbitreDAO getArbitreDAO() {
+    return new ArbitreDAO(SqlConn);
+}
+
+
+    /**
+     * méthode qui fournit une instance d'ArbitreDAO
      * @return l'instance d'EleveDAO
      */
-    public ArbitreDAO getArbitreDAO() {
-        return new ArbitreDAO(SqlConn);
+public JoueursDAO getJoueursDAO() {
+        return new JoueursDAO(SqlConn);
     }
 
 }

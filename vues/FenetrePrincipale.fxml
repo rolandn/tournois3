@@ -16,7 +16,7 @@
                 <Menu text="Listes">
                     <items>
                         <MenuItem text="Lister les arbitres" onAction="#MListerArbitres" />
-                        <MenuItem text="Lister les joueurs" />
+                        <MenuItem text="Lister les joueurs" onAction="#MListerJoueurs" />
                         <MenuItem text="Lister les tables"/>
                     </items>
                 </Menu>

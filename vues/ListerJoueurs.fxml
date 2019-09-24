@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+
+            prefHeight="17000" prefWidth="7000">
+
+    <children>
+                <TableView fx:id="TVJoueur" prefWidth="560" prefHeight ="640" AnchorPane.topAnchor="15"
+                           AnchorPane.leftAnchor="15">
+                <columns>
+                <TableColumn fx:id="TCIdj" text="Numéro" minWidth="50">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Idj" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="TCNom" text="Nom" minWidth="75">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Nom" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="TCPrenom" text="Prénom" minWidth="75">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Prenom" />
+                </cellValueFactory>
+
+                </TableColumn>
+                    <TableColumn fx:id="TCStyle" text="Style" minWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="Style" />
+                        </cellValueFactory>
+                    </TableColumn>
+
+
+
+                </columns>
+                </TableView>
+
+        <Button fx:id="BFermer" prefWidth="180" prefHeight="20" onAction="#BFermer" text="Fermer"
+                AnchorPane.rightAnchor="15" AnchorPane.bottomAnchor="15" />
+    </children>
+
+
+</AnchorPane>
