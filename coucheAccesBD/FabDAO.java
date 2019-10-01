@@ -1,4 +1,6 @@
 package coucheAccesBD;
+import classesMetier.Equipes;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -90,7 +92,7 @@ public class FabDAO
     }
     /**
  * méthode qui fournit une instance d'ArbitreDAO
- * @return l'instance d'EleveDAO
+ * @return l'instance d'ArbitreDAO
  */
 public ArbitreDAO getArbitreDAO() {
     return new ArbitreDAO(SqlConn);
@@ -99,9 +101,18 @@ public ArbitreDAO getArbitreDAO() {
 
     /**
      * méthode qui fournit une instance d'ArbitreDAO
+     * @return l'instance d'EquipeDAO
+     */
+public EquipesDAO getEquipesDAO() {
+        return new EquipesDAO(SqlConn);
+    }
+
+
+    /**
+     * méthode qui fournit une instance d'ArbitreDAO
      * @return l'instance d'EleveDAO
      */
-public JoueursDAO getJoueursDAO() {
+    public JoueursDAO getJoueursDAO() {
         return new JoueursDAO(SqlConn);
     }
 

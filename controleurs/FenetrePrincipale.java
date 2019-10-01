@@ -68,6 +68,12 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
+    private void MListerJoueurs(ActionEvent event)
+    {
+        new ListerJoueurs(Fenetre);
+    }
+
+    @FXML
     private void MQuitter(ActionEvent event)
     {
         System.exit(0);

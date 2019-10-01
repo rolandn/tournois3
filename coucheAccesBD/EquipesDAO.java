@@ -3,9 +3,9 @@ import java.sql.*;
 import java.util.*;
 import classesMetier.*;
 
-public class JoueursDAO extends BaseDAO<Joueurs>
+public class EquipesDAO extends BaseDAO<Equipes>
 {
-    public JoueursDAO(Connection sqlConn)
+    public EquipesDAO(Connection sqlConn)
     {
         super(sqlConn);
     }
@@ -15,23 +15,22 @@ public class JoueursDAO extends BaseDAO<Joueurs>
      * @return la liste de tous les cours
      */
 
-    public List<Joueurs> listerTous() throws ExceptionAccesBD
+    public List<Equipes> listerTous() throws ExceptionAccesBD
     {
-        ArrayList<Joueurs> liste = new ArrayList<Joueurs>();
+        ArrayList<Equipes> liste = new ArrayList<Equipes>();
         try
         {
-            SqlCmd = SqlConn.prepareCall("select idj, nom, prenom, style, nomImage " +
-                    "from joueurs " +
+            SqlCmd = SqlConn.prepareCall("select ide, nom, joueur1, joueur2 " +
+                    "from equipe " +
                     "order by nom asc");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
 
             while (sqlRes.next() == true)
-                liste.add(new Joueurs(sqlRes.getInt(1),
+                liste.add(new Equipes(sqlRes.getInt(1),
                         sqlRes.getString(2),
-                        sqlRes.getString(3),
-                        sqlRes.getString(4),
-                        sqlRes.getString(5)));
+                        sqlRes.getInt(3),
+                        sqlRes.getInt(4)));
             sqlRes.close();
         }
         catch(Exception e)
@@ -47,27 +46,26 @@ public class JoueursDAO extends BaseDAO<Joueurs>
      * @param obj : le joueur
      */
 
-    public void ajouter(Joueurs obj) throws ExceptionAccesBD
+    public void ajouter(Equipes obj) throws ExceptionAccesBD
     {
         try
         {
-            SqlCmd = SqlConn.prepareCall("select max(idj) + 1 from joueurs");
+            SqlCmd = SqlConn.prepareCall("select max(ide) + 1 from equipes");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
             sqlRes.next();
 
-            int idj = sqlRes.getInt(1);
-            if(sqlRes.wasNull()) idj = 1;
+            int ide = sqlRes.getInt(1);
+            if(sqlRes.wasNull()) ide = 1;
 
             SqlCmd.close();
 
-            SqlCmd = SqlConn.prepareCall("insert into joueurs values(?, ?, ?, ?, ?)");
+            SqlCmd = SqlConn.prepareCall("insert into equipes values(?, ?, ?, ?)");
 
-            SqlCmd.setInt(1, idj);
+            SqlCmd.setInt(1, ide);
             SqlCmd.setString(2, obj.getNom());
-            SqlCmd.setString(3, obj.getPrenom());
-            SqlCmd.setString(4, obj.getStyle());
-            SqlCmd.setString(5, obj.getNomImage());
+            SqlCmd.setInt(3, obj.getJoueur1());
+            SqlCmd.setInt(3, obj.getJoueur2());
 
             SqlCmd.executeUpdate();
         }
@@ -88,7 +86,7 @@ public class JoueursDAO extends BaseDAO<Joueurs>
         {
             SqlConn.setAutoCommit(false);
 
-            SqlCmd = SqlConn.prepareCall("delete from joueurs where idj = ?");
+            SqlCmd = SqlConn.prepareCall("delete from equipes where ide = ?");
             SqlCmd.setInt(1, num);
 
             SqlCmd.executeUpdate();

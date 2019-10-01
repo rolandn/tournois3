@@ -13,7 +13,7 @@
             prefHeight="17000" prefWidth="7000">
 
     <children>
-                <TableView fx:id="TVJoueur" prefWidth="560" prefHeight ="640" AnchorPane.topAnchor="15"
+                <TableView fx:id="TVJoueurs" prefWidth="560" prefHeight ="640" AnchorPane.topAnchor="15"
                            AnchorPane.leftAnchor="15">
                 <columns>
                 <TableColumn fx:id="TCIdj" text="Numéro" minWidth="50">

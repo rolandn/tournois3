@@ -18,7 +18,7 @@
                 <columns>
                 <TableColumn fx:id="TCIda" text="Numéro" minWidth="50">
                     <cellValueFactory>
-                        <PropertyValueFactory property="NumEleve" />
+                        <PropertyValueFactory property="Ida" />
                     </cellValueFactory>
                 </TableColumn>
 
@@ -39,8 +39,6 @@
                             <PropertyValueFactory property="Experience" />
                         </cellValueFactory>
                     </TableColumn>
-
-
 
                 </columns>
                 </TableView>
