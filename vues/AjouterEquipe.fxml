@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+
+            prefHeight="900.0" prefWidth="3000.0">
+
+<children>
+    <GridPane hgap="8" vgap="8">
+    <Label text="Nom: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="TFNom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+
+    <Label text="Joueur 1: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <ComboBox fx:id="CBJoueur1" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="1"></ComboBox>
+
+    <Label text="Joueur 2: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <ComboBox fx:id="CBJoueur2" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="2"></ComboBox>
+
+
+
+        <HBox spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <children>
+                <Button fx:id="BAjouter" prefWidth="150" prefHeight="20" onAction="#BAjouterEquipe"
+                        text="Ajouter" />
+                <Button fx:id="BFermer" prefWidth="150" prefHeight="20" onAction="#BFermer" text="Fermer" />
+            </children>
+        </HBox>
+    </GridPane>
+ </children>
+
+</AnchorPane>

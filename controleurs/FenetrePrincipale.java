@@ -74,6 +74,18 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
+    private void MListerEquipes(ActionEvent event)
+    {
+        new ListerEquipes(Fenetre);
+    }
+
+    @FXML
+    private void MAjouterEquipe(ActionEvent event)
+    {
+        new AjouterEquipe(Fenetre);
+    }
+
+    @FXML
     private void MQuitter(ActionEvent event)
     {
         System.exit(0);

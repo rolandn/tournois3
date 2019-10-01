@@ -17,9 +17,18 @@
                     <items>
                         <MenuItem text="Lister les arbitres" onAction="#MListerArbitres" />
                         <MenuItem text="Lister les joueurs" onAction="#MListerJoueurs" />
-                        <MenuItem text="Lister les tables"/>
+                        <MenuItem text="Lister les équipes" onAction="#MListerEquipes"/>
                     </items>
                 </Menu>
+
+                <Menu text="Ajouter">
+                    <items>
+                        <MenuItem text="Ajouter un joueur"  />
+                        <MenuItem text="Ajouter une équipe" onAction="#MAjouterEquipe" />
+                        <MenuItem text="Ajouter un résultat" />
+                    </items>
+                </Menu>
+
                 <Menu text="Résultats">
                     <items>
                         <MenuItem text="Lister les résultats" />
