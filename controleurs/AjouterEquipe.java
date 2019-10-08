@@ -4,6 +4,7 @@ import coucheAccesBD.*;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
@@ -16,14 +17,27 @@ public class AjouterEquipe extends BaseFenetre{
 
 
     @FXML private TextField TFNom;
-    @FXML private ComboBox<String> CBJoueur1;
-    @FXML private ComboBox<String> CBJoueur2;
+    @FXML private ComboBox<Joueurs> CBJoueur1;
+    @FXML private ComboBox<Joueurs> CBJoueur2;
 
 
     public AjouterEquipe(Stage fenParent)
     {
         super(fenParent, "AjouterEquipe.fxml", "Ajouter une nouvelle équipe", 580, 260);
-        
+
+        try
+        {
+            CBJoueur1.setItems(FXCollections.observableArrayList(FabDAO.getInstance().getJoueursDAO().listerTous()));
+
+            CBJoueur2.setItems(FXCollections.observableArrayList(FabDAO.getInstance().getJoueursDAO().listerTous()));
+        }
+        catch(ExceptionAccesBD e)
+        {
+            new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
+            return;
+        }
+
+
         // afficher la fenêtre
         showAndWait();
     }
@@ -32,45 +46,30 @@ public class AjouterEquipe extends BaseFenetre{
  * méthode qui est exécutée quand on clique sur le bouton Ajouter et qui ajoute l'équipe dans la BD
  */
 
-@FXML
-private void BAjouterEquipe()
+@FXML private void BAjouterEquipe()
 {
-    Equipes equipes = null;
+    Equipes equipes = new Equipes();
 
-    int Joueur1 = CBJoueur1.getSelectionModel().getSelectedItem().getJoueur1(); // juste mettre les bonnes variables
-    int Joueur1 = CBJoueur1.getSelectionModel().getSelectedItem().getJoueur1();
-
-    // ajouter l'équipe dans la BD
+    equipes.setNom(TFNom.getText());
+    equipes.setJoueur1(CBJoueur1.getSelectionModel().getSelectedItem().getIdj());
+    equipes.setJoueur2(CBJoueur2.getSelectionModel().getSelectedItem().getIdj());
 
     try
     {
-        FabDAO.getInstance().debuterTransaction();
-
         FabDAO.getInstance().getEquipesDAO().ajouter(equipes);
-
-        close();
-        return;
     }
     catch(ExceptionAccesBD e)
     {
         new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
     }
-    catch(Exception e)
+    catch (Exception e)
     {
         new MsgBox(this, AlertType.ERROR, "Erreur", e.getMessage());
+        return;
     }
-    // annuler l'ajout dans la BD si un problème d'accès à la BD ou
-    // si un problème de copie du fichier est survenu
 
-    try
-    {
-        FabDAO.getInstance().annulerTransaction();
-    }
-    catch(ExceptionAccesBD e)
-    {
-        new MsgBox(this, AlertType.ERROR, "Erreur de transaction", e.getMessage());
-    }
     close();
+
 }
 
     /**

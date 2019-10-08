@@ -12,7 +12,7 @@ public class Joueurs
     /**
      * propriété get... pour obtenir la valeur des attributs
      */
-    public int getIda() { return Idj; }
+    public int getIdj() { return Idj; }
 
     public String getNom() { return Nom; }
 
@@ -26,7 +26,7 @@ public class Joueurs
      * propriété set... pour modifier la valeur des attributs
      */
 
-    public void setIda(int idj) { Idj = idj; }
+    public void setIdj(int idj) { Idj = idj; }
 
     public void setNom(String nom) { Nom = nom; }
 
@@ -35,6 +35,14 @@ public class Joueurs
     public void setStyle(String style) {Style = style;}
 
     public void setNomImage(String nom) { NomImage = nom; }
+
+
+    /**
+     * redéfinition de la méthode toString
+     * @return la concaténation du nom et du nom du joueur
+     */
+    @Override
+    public String toString() { return Nom; }
 
     /**
      * constructeurs

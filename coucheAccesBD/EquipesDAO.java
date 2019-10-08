@@ -22,7 +22,7 @@ public class EquipesDAO extends BaseDAO<Equipes>
         {
             SqlCmd = SqlConn.prepareCall("select ide, nom, joueur1, joueur2 " +
                     "from equipe " +
-                    "order by nom asc");
+                    "order by ide asc");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
 
@@ -43,14 +43,14 @@ public class EquipesDAO extends BaseDAO<Equipes>
 
     /**
      * méthode qui ajoute dans la base de données un joueur
-     * @param obj : le joueur
+     * @param obj : l'équipe
      */
 
     public void ajouter(Equipes obj) throws ExceptionAccesBD
     {
         try
         {
-            SqlCmd = SqlConn.prepareCall("select max(ide) + 1 from equipes");
+            SqlCmd = SqlConn.prepareCall("select max(ide) + 1 from equipe");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
             sqlRes.next();
@@ -58,14 +58,16 @@ public class EquipesDAO extends BaseDAO<Equipes>
             int ide = sqlRes.getInt(1);
             if(sqlRes.wasNull()) ide = 1;
 
+            else ide = ide +1;
+
             SqlCmd.close();
 
-            SqlCmd = SqlConn.prepareCall("insert into equipes values(?, ?, ?, ?)");
+            SqlCmd = SqlConn.prepareCall("insert into equipe values(?, ?, ?, ?)");
 
             SqlCmd.setInt(1, ide);
             SqlCmd.setString(2, obj.getNom());
             SqlCmd.setInt(3, obj.getJoueur1());
-            SqlCmd.setInt(3, obj.getJoueur2());
+            SqlCmd.setInt(4, obj.getJoueur2());
 
             SqlCmd.executeUpdate();
         }
