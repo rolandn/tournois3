@@ -2,6 +2,7 @@ package coucheAccesBD;
 import java.sql.*;
 import java.util.*;
 import classesMetier.*;
+import controleurs.*;
 
 public class TablesDAO extends BaseDAO<Tables>
 {

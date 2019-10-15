@@ -143,59 +143,6 @@ public class RencontresDAO extends BaseDAO<Rencontres>
         }
     }
 
-    // Génération du tournois
 
-    public void GenererRencontre(String s)
-    {
-
-        try
-        {
-            int NbrRandom;
-            String p;
-
-            Random R = new Random();
-            Rencontres rencontres = new Rencontres();
-
-            List<Equipes> equipes = ListerEquipes(s);
-            List<Tables> tables = ListerTable();
-            List<Arbitres> arbitres = ListerArbitres();
-
-            if (ListerRencontre("").Count == 0)
-                p = "Quart";
-
-            else if (ListerRencontre("").Count == 4)
-                p = "Demi finale";
-
-            else
-                p = "Finale";
-
-            while (equipes.size() > 0)
-            {
-                rencontres.setPhase(p);
-
-                NbrRandom = R.Next(0, Tables.Count);
-                rencontres.getNumTable() = Tables[NbrRandom].Idt;
-                Table.Remove(Table[NbrRandom]);
-
-                NbrRandom = R.Next(0, Arbitre.Count);
-                rencontres.getNumArbitre() = Arbitre[NbrRandom].IDArbitre;
-                Arbitre.Remove(Arbitre[NbrRandom]);
-
-                NbrRandom = R.Next(0, Equipes.Count);
-                rencontres.getNumEquipe1() = Equipes[NbrRandom].IDJoueur;
-                Equipes.Remove(Equipes[NbrRandom]);
-
-                NbrRandom = R.Next(0, Equipes.Count);
-                rencontres.getNumEquipe2() = Equipes[NbrRandom].IDJoueur;
-                Equipes.Remove(Equipes[NbrRandom]);
-
-                ajouter(Rencontres);
-            }
-        }
-        catch (Exception e)
-        {
-            throw new ExceptionAccesBD(e.getMessage());
-        }
-    }
 
 }

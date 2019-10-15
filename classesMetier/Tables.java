@@ -12,7 +12,7 @@ public class Tables
     /**
      * propriété get... pour obtenir la valeur des attributs
      */
-    public int getIda() { return Idt; }
+    public int getIdt() { return Idt; }
 
     public String getNom() { return Nom; }
 

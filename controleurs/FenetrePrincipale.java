@@ -1,10 +1,15 @@
 package controleurs;
+import classesMetier.Rencontres;
 import coucheAccesBD.*;
 import java.net.URL;
+
+import coucheMetier.CoucheMetier;
+import coucheMetier.ExceptionMetier;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -74,9 +79,30 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
+    private void MListerRencontres(ActionEvent event)
+    {
+        new ListerRencontres(Fenetre);
+    }
+
+    @FXML
     private void MListerEquipes(ActionEvent event)
     {
         new ListerEquipes(Fenetre);
+    }
+
+    @FXML
+    private void MAjouterRencontres(ActionEvent event)
+    {
+        try {
+            CoucheMetier.getInstance().GenererRencontre();
+        }
+
+        catch (Exception e)
+        {
+                // a ajouter une message box
+        }
+
+
     }
 
     @FXML

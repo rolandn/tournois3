@@ -116,4 +116,21 @@ public EquipesDAO getEquipesDAO() {
         return new JoueursDAO(SqlConn);
     }
 
+
+    /**
+     * méthode qui fournit une instance d'ArbitreDAO
+     * @return l'instance d'EleveDAO
+     */
+    public TablesDAO getTablesDAO() {
+        return new TablesDAO(SqlConn);
+    }
+
+    /**
+     * méthode qui fournit une instance d'ArbitreDAO
+     * @return l'instance d'EleveDAO
+     */
+    public RencontresDAO getRencontresDAO() {return new RencontresDAO(SqlConn); }
+
 }
+
+

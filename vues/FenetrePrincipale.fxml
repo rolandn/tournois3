@@ -18,6 +18,7 @@
                         <MenuItem text="Lister les arbitres" onAction="#MListerArbitres" />
                         <MenuItem text="Lister les joueurs" onAction="#MListerJoueurs" />
                         <MenuItem text="Lister les équipes" onAction="#MListerEquipes"/>
+                        <MenuItem text="Lister les rencontres" onAction="#MListerRencontres"/>
                     </items>
                 </Menu>
 
@@ -35,12 +36,22 @@
                         <MenuItem text="Ajouter un résultat d'un match" />
                     </items>
                 </Menu>
+
+                <Menu text="Tournois">
+                    <items>
+                        <MenuItem text="Générer les recontres" onAction="#MAjouterRencontres"/>
+                    </items>
+                </Menu>
+
                 <Menu text="Quitter">
                     <items>
                         <MenuItem text="Quitter le programme" onAction="#MQuitter" />
                     </items>
                 </Menu>
             </menus>
+
+
+
         </MenuBar>
 
 </AnchorPane>
