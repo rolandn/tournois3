@@ -105,11 +105,11 @@ public class CoucheMetier {
                     arbitres.remove(NbrRandom);
 
                     NbrRandom = R.nextInt(gagants_quart.size());
-                    rencontres.setNumEquipe1(gagants_quart.size());
+                    rencontres.setNumEquipe1(gagants_quart.get(NbrRandom).getNumGagnant());
                     gagants_quart.remove(NbrRandom);
 
                     NbrRandom = R.nextInt(gagants_quart.size());
-                    rencontres.setNumEquipe2(gagants_quart.size());
+                    rencontres.setNumEquipe2(gagants_quart.get(NbrRandom).getNumGagnant());
                     gagants_quart.remove(NbrRandom);
 
                     FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
@@ -136,11 +136,11 @@ public class CoucheMetier {
                     arbitres.remove(NbrRandom);
 
                     NbrRandom = R.nextInt(gagants_demi.size());
-                    rencontres.setNumEquipe1(gagants_demi.get(NbrRandom).getNumEquipe1());
+                    rencontres.setNumEquipe1(gagants_demi.get(NbrRandom).getNumGagnant());
                     gagants_demi.remove(NbrRandom);
 
                     NbrRandom = R.nextInt(gagants_demi.size());
-                    rencontres.setNumEquipe2(gagants_demi.get(NbrRandom).getNumEquipe2());
+                    rencontres.setNumEquipe2(gagants_demi.get(NbrRandom).getNumGagnant());
                     gagants_demi.remove(NbrRandom);
 
                     FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
