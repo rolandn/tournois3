@@ -21,16 +21,15 @@ public class TablesDAO extends BaseDAO<Tables>
         ArrayList<Tables> liste = new ArrayList<Tables>();
         try
         {
-            SqlCmd = SqlConn.prepareCall("select idt, nom, position " +
+            SqlCmd = SqlConn.prepareCall("select idt, position " +
                     "from tables " +
-                    "order by nom asc");
+                    "order by idt asc");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
 
             while (sqlRes.next() == true)
                 liste.add(new Tables(sqlRes.getInt(1),
-                        sqlRes.getString(2),
-                        sqlRes.getInt(3)));
+                                     sqlRes.getInt(2)));
             sqlRes.close();
         }
         catch(Exception e)

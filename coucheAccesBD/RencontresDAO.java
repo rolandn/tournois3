@@ -65,7 +65,7 @@ public class RencontresDAO extends BaseDAO<Rencontres>
     {
         try
         {
-            SqlCmd = SqlConn.prepareCall("select max(idr) + 1 from rencontres");
+            SqlCmd = SqlConn.prepareCall("select max(idr) from rencontres");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
             sqlRes.next();
@@ -83,10 +83,10 @@ public class RencontresDAO extends BaseDAO<Rencontres>
             SqlCmd.setString(2, obj.getPhase());
             SqlCmd.setInt(3, obj.getNumEquipe1());
             SqlCmd.setInt(4, obj.getNumEquipe2());
-            SqlCmd.setInt(4, obj.getNumArbitre());
-            SqlCmd.setInt(4, obj.getNumTable());
-            SqlCmd.setInt(4, obj.getNumGagnant());
-            SqlCmd.setString(4, obj.getScore());
+            SqlCmd.setInt(5, obj.getNumArbitre());
+            SqlCmd.setInt(6, obj.getNumTable());
+            SqlCmd.setInt(7, obj.getNumGagnant());
+            SqlCmd.setString(8, obj.getScore());
 
             SqlCmd.executeUpdate();
         }

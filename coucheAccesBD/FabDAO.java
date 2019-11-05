@@ -91,20 +91,36 @@ public class FabDAO
         }
     }
     /**
- * méthode qui fournit une instance d'ArbitreDAO
- * @return l'instance d'ArbitreDAO
- */
-public ArbitreDAO getArbitreDAO() {
+     * méthode qui fournit une instance d'ArbitreDAO
+     * @return l'instance d'ArbitreDAO
+     */
+    public ArbitreDAO getArbitreDAO() {
     return new ArbitreDAO(SqlConn);
 }
 
 
     /**
-     * méthode qui fournit une instance d'ArbitreDAO
+     * méthode qui fournit une instance d'EquipeDAO
      * @return l'instance d'EquipeDAO
      */
-public EquipesDAO getEquipesDAO() {
+    public EquipesDAO getEquipesDAO() {
         return new EquipesDAO(SqlConn);
+    }
+
+    /**
+     * méthode qui fournit une instance d'EquipeQuartDAO
+     * @return l'instance d'EquipeQuartDAO --> pour lister les équipes en quart de finale
+     */
+    public GagnantsQuartDAO getEquipesQuartDAO() {
+        return new GagnantsQuartDAO(SqlConn);
+    }
+
+    /**
+     * méthode qui fournit une instance d'EquipeDemiDAO
+     * @return l'instance d'EquipeDemiDAO --> pour lister les équipes en quart de finale
+     */
+    public GagnantsDemiDAO getEquipesDemiDAO() {
+        return new GagnantsDemiDAO(SqlConn);
     }
 
 
@@ -118,16 +134,16 @@ public EquipesDAO getEquipesDAO() {
 
 
     /**
-     * méthode qui fournit une instance d'ArbitreDAO
-     * @return l'instance d'EleveDAO
+     * méthode qui fournit une instance de TableDAO
+     * @return l'instance TableDAO
      */
     public TablesDAO getTablesDAO() {
         return new TablesDAO(SqlConn);
     }
 
     /**
-     * méthode qui fournit une instance d'ArbitreDAO
-     * @return l'instance d'EleveDAO
+     * méthode qui fournit une instance de RencontresDAO
+     * @return l'instance RencontresDAO
      */
     public RencontresDAO getRencontresDAO() {return new RencontresDAO(SqlConn); }
 

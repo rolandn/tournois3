@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -97,9 +98,11 @@ public class FenetrePrincipale extends Application
             CoucheMetier.getInstance().GenererRencontre();
         }
 
-        catch (Exception e)
+        catch (ExceptionMetier e)
         {
-                // a ajouter une message box
+            new MsgBox(Fenetre, AlertType.WARNING, "Erreur lors de la génération de la rencontre", e.getMessage());
+            return;
+
         }
 
 
