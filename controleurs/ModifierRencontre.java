@@ -89,7 +89,8 @@ public class ModifierRencontre extends BaseFenetre
     {
         Rencontres rencontres;
         rencontres = new Rencontres();  // à enlever quand on aura fait le try/catch (si contrainte métier).
-        // --> il le faut car cela me retourne aussi les différents valeurs champs sinon tout est à 0 et j'aiune erreur SQL !
+        // --> il le faut car cela me retourne aussi les différents valeurs champs sinon
+        // tout est à 0 et j'aiune erreur SQL !
 
         // vérifier les données sur l'élève
 
