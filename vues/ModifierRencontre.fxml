@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="170000" prefWidth="70000">
+
+    <children>
+    <GridPane hgap="9" vgap="9">
+    <children>
+    <Label text="Choisissez une rencontre: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <ComboBox fx:id="CBIdr" GridPane.columnIndex="1" GridPane.rowIndex="0"
+              visibleRowCount="4" />
+
+    <Separator GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <GridPane.columnSpan>2</GridPane.columnSpan>
+    </Separator>
+
+    <Label text="Phase: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="TFPhase" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+    <Label text="Equipe1: " GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <TextField fx:id="TFNumEquipe1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+    <Label text="Equipe2: " GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <TextField fx:id="TFNumEquipe2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+    <Label text="Numéro du gagnant: " GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <TextField fx:id="TFNumGagnant" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+    <Label text="Score: " GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <TextField fx:id="TFScore" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+        <Button fx:id="BAjouter"
+                prefWidth="180"
+                prefHeight="80"
+                onAction="#BModifierRencontre"
+                text="Modifier"
+                GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+        <Button fx:id="BFermer"
+                prefWidth="180"
+                prefHeight="80"
+                onAction="#BFermer"
+                text="Fermer"
+                GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+    </children>
+    </GridPane>
+
+    </children>
+</AnchorPane>

@@ -129,11 +129,13 @@ public class RencontresDAO extends BaseDAO<Rencontres>
         {
             SqlCmd = SqlConn.prepareCall("update rencontres " +
                     "set NumGagnant = ?, " +
-                    "score = ?, ");
+                    "score = ?, " +
+                    "where idr = ?");
 
-            SqlCmd.setInt(3, obj.getNumGagnant());
+            SqlCmd.setInt(1, obj.getNumGagnant());
             SqlCmd.setString(2, obj.getScore());
 
+            SqlCmd.setInt(3,obj.getIdr());
 
             SqlCmd.executeUpdate();
         }
