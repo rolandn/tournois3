@@ -29,7 +29,8 @@ public class Rencontres
 
     public String getScore() { return Score; }
 
-
+    @Override
+    public String toString() { return Idr + " " + Phase; }
 
     /**
      * propriété set... pour modifier la valeur des attributs

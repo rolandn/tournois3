@@ -57,6 +57,47 @@ public class RencontresDAO extends BaseDAO<Rencontres>
     }
 
     /**
+     * méthode qui lit dans la base de données tous les cours
+     * @return la liste de toutes les rencontres
+     */
+
+    public List<Rencontres> listerRencontresEquipe(int num) throws ExceptionAccesBD
+    {
+        ArrayList<Rencontres> liste = new ArrayList<Rencontres>();
+        try
+        {
+            SqlCmd = SqlConn.prepareCall("select idr," +
+                    " phase, NumEquipe1, NumEquipe2, " +
+                    "NumArbitre, NumTable, NumGagnant, score " +
+                    "from rencontres " +
+                    " where NumEquipe1 = ? OR NumEquipe2 = ?" +
+                    "order by idr asc");
+
+            SqlCmd.setInt(1, num);
+            SqlCmd.setInt(2, num);
+
+            ResultSet sqlRes = SqlCmd.executeQuery();
+
+            while (sqlRes.next() == true)
+                liste.add(new Rencontres(sqlRes.getInt(1),
+                        sqlRes.getString(2),
+                        sqlRes.getInt(3),
+                        sqlRes.getInt(4),
+                        sqlRes.getInt(5),
+                        sqlRes.getInt(6),
+                        sqlRes.getInt(7),
+                        sqlRes.getString(8)));
+            sqlRes.close();
+        }
+        catch(Exception e)
+        {
+            throw new ExceptionAccesBD(e.getMessage());
+        }
+
+        return liste;
+    }
+
+    /**
      * méthode qui ajoute dans la base de données un joueur
      * @param obj : l'équipe
      */
@@ -77,7 +118,7 @@ public class RencontresDAO extends BaseDAO<Rencontres>
 
             SqlCmd.close();
 
-            SqlCmd = SqlConn.prepareCall("insert into rencontres values(?, ?, ?, ?, ?, ?, ?, ?)");
+            SqlCmd = SqlConn.prepareCall("insert into rencontres values(?, ?, ?, ?, ?, ?, 0, '')");
 
             SqlCmd.setInt(1, idr);
             SqlCmd.setString(2, obj.getPhase());
@@ -85,8 +126,8 @@ public class RencontresDAO extends BaseDAO<Rencontres>
             SqlCmd.setInt(4, obj.getNumEquipe2());
             SqlCmd.setInt(5, obj.getNumArbitre());
             SqlCmd.setInt(6, obj.getNumTable());
-            SqlCmd.setInt(7, obj.getNumGagnant());
-            SqlCmd.setString(8, obj.getScore());
+        //    SqlCmd.setInt(7, obj.getNumGagnant());
+        //    SqlCmd.setString(8, obj.getScore());
 
             SqlCmd.executeUpdate();
         }
@@ -129,12 +170,11 @@ public class RencontresDAO extends BaseDAO<Rencontres>
         {
             SqlCmd = SqlConn.prepareCall("update rencontres " +
                     "set NumGagnant = ?, " +
-                    "score = ?, " +
+                    "score = ? " +
                     "where idr = ?");
 
             SqlCmd.setInt(1, obj.getNumGagnant());
             SqlCmd.setString(2, obj.getScore());
-
             SqlCmd.setInt(3,obj.getIdr());
 
             SqlCmd.executeUpdate();
@@ -144,7 +184,5 @@ public class RencontresDAO extends BaseDAO<Rencontres>
             throw new ExceptionAccesBD(e.getMessage());
         }
     }
-
-
 
 }

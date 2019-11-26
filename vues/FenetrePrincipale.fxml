@@ -32,7 +32,8 @@
 
                 <Menu text="Résultats">
                     <items>
-                        <MenuItem text="Lister les résultats" />
+                        <MenuItem text="Lister les résultats" onAction="#MListerRencontres"/>
+                        <MenuItem text="Lister les résultats d'une équipe" onAction="#MListerRencontresEquipe"/>
                         <MenuItem text="Ajouter un résultat d'un match"  onAction="#MModifierRencontres"/>
                     </items>
                 </Menu>

@@ -16,7 +16,7 @@
     <children>
     <Label text="Choisissez une rencontre: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <ComboBox fx:id="CBIdr" GridPane.columnIndex="1" GridPane.rowIndex="0"
-              visibleRowCount="4" />
+              visibleRowCount="6" />
 
     <Separator GridPane.columnIndex="0" GridPane.rowIndex="1">
         <GridPane.columnSpan>2</GridPane.columnSpan>
@@ -37,10 +37,10 @@
     <Label text="Score: " GridPane.columnIndex="0" GridPane.rowIndex="6" />
     <TextField fx:id="TFScore" GridPane.columnIndex="1" GridPane.rowIndex="6" />
 
-        <Button fx:id="BAjouter"
+        <Button fx:id="BModifierRencontreChoisie"
                 prefWidth="180"
                 prefHeight="80"
-                onAction="#BModifierRencontre"
+                onAction="#BModifierRencontreChoisie"
                 text="Modifier"
                 GridPane.columnIndex="0" GridPane.rowIndex="7"/>
         <Button fx:id="BFermer"

@@ -85,10 +85,17 @@ public class FenetrePrincipale extends Application
         new ModifierRencontre(Fenetre);
     }
 
+
     @FXML
     private void MListerRencontres(ActionEvent event)
     {
         new ListerRencontres(Fenetre);
+    }
+
+    @FXML
+    private void MListerRencontresEquipe(ActionEvent event)
+    {
+        new ListerRencontresEquipe(Fenetre);
     }
 
     @FXML

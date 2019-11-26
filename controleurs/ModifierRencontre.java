@@ -1,5 +1,6 @@
 package controleurs;
 import classesMetier.*;
+import classesMetier.Equipes;
 import coucheAccesBD.*;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ public class ModifierRencontre extends BaseFenetre
 
 
     @FXML private Button BFermer;
+    @FXML private Button BModifierRencontreChoisie;
 
     @FXML private ComboBox<Rencontres> CBIdr;
     @FXML private TextField TFPhase;
@@ -25,7 +27,7 @@ public class ModifierRencontre extends BaseFenetre
     @FXML private TextField TFNumGagnant;
     @FXML private TextField TFScore;
     
-    @FXML private Button BAjouter;
+
 
 //    @FXML private ComboBox<Rencontres> CBRencontre;
 
@@ -33,7 +35,7 @@ public class ModifierRencontre extends BaseFenetre
     {
         super(fenParent, "ModifierRencontre.fxml", "Ajouter le résultat d'une rencontre", 1000, 600);
 
-// ajouter les rencontres dans la boîte combo CBRencontre
+        // ajouter les rencontres dans la boîte combo CBRencontre
         try
         {
             CBIdr.setItems(FXCollections.observableArrayList(
@@ -48,7 +50,7 @@ public class ModifierRencontre extends BaseFenetre
         if(CBIdr.getItems().size() == 0)
         {
             new MsgBox(this, AlertType.INFORMATION, "Information",
-                    "Il n'y a aucun élève dans la base de données!");
+                    "Il n'y a aucune rencontre dans la base de données!");
             return;
         }
 
@@ -68,8 +70,8 @@ public class ModifierRencontre extends BaseFenetre
     }
 
     /**
-     * Méthode qui met à jour le contenu des contrôles dans la fenêtre lors du changement ...
-     * ... de la rencontre courant dans la boîte combo
+     * Méthode qui met à jour le contenu du contenu dans la fenêtre lors du changement
+     * de la rencontre courant dans la boîte combo
      * @param rencontres : un objet Rencontres contenant les informations
      */
 
@@ -80,37 +82,21 @@ public class ModifierRencontre extends BaseFenetre
         TFNumEquipe2.setText(Integer.toString(rencontres.getNumEquipe2()));
         TFNumGagnant.setText(Integer.toString(rencontres.getNumGagnant()));
         TFScore.setText(rencontres.getScore());
-
     }
 
-
+    /**
+     * méthode qui est exécutée quand on clique sur le bouton Modifier
+     * et qui applique les modifications renseignés dans les champs.
+     */
     @FXML
-    private void BModifierRencontre()
+    public void BModifierRencontreChoisie()
     {
-        Rencontres rencontres;
-        rencontres = new Rencontres();  // à enlever quand on aura fait le try/catch (si contrainte métier).
-        // --> il le faut car cela me retourne aussi les différents valeurs champs sinon
-        // tout est à 0 et j'aiune erreur SQL !
+        Rencontres rencontres = new Rencontres();
+        rencontres.setNumGagnant(Integer.parseInt(TFNumGagnant.getText()));
 
-        // vérifier les données sur l'élève
-
-//        try
-//        {
-//            rencontres = coucheMetier.getInstance().TesterContraintesRencontre(TFNom.getText(),
-//                    TFPrenom.getText(),
-//                    TFPoids.getText(),
-//                    CBAnnee.getValue(),
-//                    TFDateNaissance.getText(),
-//                    TFNomImage.getText());
-//        }
-//        catch (ExceptionMetier e)
-//        {
-//            new MsgBox(this, AlertType.WARNING, "Erreur de test", e.getMessage());
-//            return;
-//        }
-
+        rencontres.setScore(TFScore.getText());
+       // rencontres.setNumGagnant(2);
         rencontres.setIdr(CBIdr.getSelectionModel().getSelectedItem().getIdr());
-
 
         try
         {
@@ -126,16 +112,6 @@ public class ModifierRencontre extends BaseFenetre
             new MsgBox(this, AlertType.ERROR, "Erreur", e.getMessage());
         }
 
-        // annuler la modification dans la BD si un problème d'accès à la BD ou
-        // si un problème de copie du fichier est survenu
-        try
-        {
-            FabDAO.getInstance().annulerTransaction();
-        }
-        catch(ExceptionAccesBD e)
-        {
-            new MsgBox(this, AlertType.ERROR, "Erreur de transaction", e.getMessage());
-        }
         close();
     }
 
@@ -148,3 +124,32 @@ public class ModifierRencontre extends BaseFenetre
         close();
     }
 }
+
+
+
+
+// ANCIEN CODE
+
+// rencontres = new Rencontres();  // à enlever quand on aura fait le try/catch (si contrainte métier).
+// --> il le faut car cela me retourne aussi les différents valeurs champs sinon
+// tout est à 0 et j'aiune erreur SQL !
+
+// vérifier les données sur l'élève
+
+//       try
+//        {
+//            TFNumGagnant.getText(Integer.toString(rencontres.setNumGagnant()));
+//
+//        }
+//       catch (ExceptionAccesBD e)
+//        {
+//            new MsgBox(this, AlertType.WARNING, "Erreur de test", e.getMessage());
+//            return;
+//        }
+
+// !!!!!!!!!!!!!!!! faire l'inversse que pour l'affichage get --> set et set --> get
+
+
+
+//  TFNumGagnant.getText(Integer.toString(rencontres.setNumGagnant()));
+//  TFScore.getText(rencontres.setScore());

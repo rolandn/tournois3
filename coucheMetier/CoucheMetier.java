@@ -156,4 +156,20 @@ public class CoucheMetier {
         }
     }
 
+    /**
+     * méthode qui teste si un n° d'équipe gagnant est valide
+     * @param gagnant : int = id équipe gagante
+     * @return un résultat validé
+     */
+    public Rencontres testerContrainteGagnant(int gagnant) throws ExceptionMetier
+    {
+
+        Rencontres rencontres = new Rencontres();
+
+        if (rencontres.getNumEquipe1()!= gagnant || rencontres.getNumEquipe2()!= gagnant)
+            throw new ExceptionMetier("Ce n'est pas une des deux équipes qui jouaient ensemble !");
+        rencontres.setNumGagnant(gagnant);
+
+     return rencontres;
+    }
 }
