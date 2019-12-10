@@ -22,7 +22,7 @@ public class EquipesDAO extends BaseDAO<Equipes>
         {
             SqlCmd = SqlConn.prepareCall("select ide, nom, joueur1, joueur2 " +
                     "from equipe " +
-                    "order by ide asc");
+                    "order by ide asc ");
 
             ResultSet sqlRes = SqlCmd.executeQuery();
 
@@ -88,7 +88,7 @@ public class EquipesDAO extends BaseDAO<Equipes>
         {
             SqlConn.setAutoCommit(false);
 
-            SqlCmd = SqlConn.prepareCall("delete from equipes where ide = ? ");
+            SqlCmd = SqlConn.prepareCall("delete from equipe where ide = ? ");
             SqlCmd.setInt(1, num);
 
             SqlCmd.executeUpdate();
@@ -105,7 +105,7 @@ public class EquipesDAO extends BaseDAO<Equipes>
         {
             SqlConn.setAutoCommit(false);
 
-            SqlCmd = SqlConn.prepareCall("delete from equipes where Joueur1 = ? OR Joueur2 = ? ");
+            SqlCmd = SqlConn.prepareCall("delete from equipe where Joueur1 = ? OR Joueur2 = ? ");
             SqlCmd.setInt(1, idj);
             SqlCmd.setInt(2, idj);
 

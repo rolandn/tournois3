@@ -59,9 +59,11 @@ public class JoueursDAO extends BaseDAO<Joueurs>
             int idj = sqlRes.getInt(1);
             if(sqlRes.wasNull()) idj = 1;
 
+            else idj = idj +1;
+
             SqlCmd.close();
 
-            SqlCmd = SqlConn.prepareCall("insert into joueurs values(?, ?, ?, ?, ?)");
+            SqlCmd = SqlConn.prepareCall("insert into joueurs values(?, ?, ?, ?, ? ) ");
 
             SqlCmd.setInt(1, idj);
             SqlCmd.setString(2, obj.getNom());

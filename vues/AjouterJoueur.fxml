@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="1000" prefWidth="1500">
+
+    <GridPane hgap="8" vgap="8">
+    <Label text="Nom: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="TFNom" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+    <Label text="Prénom: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <TextField fx:id="TFPrenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <Label text="Style: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <TextField fx:id="TFStyle" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Button fx:id="BAjouter" prefWidth="150" prefHeight="20" onAction="#BAjouterJoueur"
+                text="Ajouter" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+        <Button fx:id="BFermer" prefWidth="150" prefHeight="20" onAction="#BFermer"
+                text="Fermer" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    </GridPane>
+
+
+</AnchorPane>

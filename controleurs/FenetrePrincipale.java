@@ -31,7 +31,7 @@ public class FenetrePrincipale extends Application
         {
             FXMLLoader loader = new FXMLLoader(new URL("file:vues/FenetrePrincipale.fxml"));
             loader.setController(this);
-            Scene scene = new Scene(loader.load(), 750, 400, Color.WHITE);
+            Scene scene = new Scene(loader.load(), 850, 400, Color.WHITE);
             //scene.getStylesheets().add("vues/stylesCSS.css");
             fenetre.setScene(scene);
         }
@@ -80,9 +80,21 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
+    private void MAjouterJoueur(ActionEvent event)
+    {
+        new AjouterJoueur(Fenetre);
+    }
+
+    @FXML
     private void MSupprimerJoueur(ActionEvent event)
     {
         new SupprimerJoueur(Fenetre);
+    }
+
+    @FXML
+    private void MSupprimerEquipe(ActionEvent event)
+    {
+        new SupprimerEquipe(Fenetre);
     }
 
     @FXML

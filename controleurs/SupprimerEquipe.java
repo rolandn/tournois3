@@ -1,11 +1,6 @@
 package controleurs;
 
-import classesMetier.*;
-import classesMetier.Rencontres;
 import classesMetier.Equipes;
-import coucheAccesBD.*;
-import coucheAccesBD.RencontresDAO;
-import coucheAccesBD.EquipesDAO;
 import coucheAccesBD.ExceptionAccesBD;
 import coucheAccesBD.FabDAO;
 import javafx.collections.FXCollections;
@@ -13,43 +8,40 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.util.List;
-
-public class SupprimerJoueur  extends BaseFenetre {
+public class SupprimerEquipe extends BaseFenetre {
 
     @FXML private Button BFermer;
     @FXML private Button BSupprimer;
-    @FXML private ComboBox<Joueurs> CBJoueurs;
+    @FXML private ComboBox<Equipes> CBEquipe;
     /**
      * Constructeur qui crée la fenêtre
      * @param fenParent : l'objet Stage représentant la fenêtre parent
      */
-    public SupprimerJoueur(Stage fenParent)
+    public SupprimerEquipe(Stage fenParent)
     {
-        super(fenParent, "SupprimerJoueurVue.fxml", "Supprimer un joueur", 900, 300);
+        super(fenParent, "SupprimerEquipeVue.fxml", "Supprimer une équipe", 1320, 195);
 
-// ajouter les joueurs dans la boîte combo CBJoueur
+// ajouter les équipe dans la boîte combo CBEquipe
         try
         {
-            CBJoueurs.setItems(FXCollections.observableArrayList(
-                    FabDAO.getInstance().getJoueursDAO().listerTous()));
+            CBEquipe.setItems(FXCollections.observableArrayList(
+                    FabDAO.getInstance().getEquipesDAO().listerTous()));
         }
         catch(ExceptionAccesBD e)
         {
             new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
             return;
         }
-        if(CBJoueurs.getItems().size() == 0)
+        if(CBEquipe.getItems().size() == 0)
         {
             new MsgBox(this, AlertType.INFORMATION, "Information",
-                    "Il n'y a aucun joueur dans la base de données!");
+                    "Il n'y a aucune équipe dans la base de données!");
             return;
         }
-        CBJoueurs.getSelectionModel().selectFirst();
+        CBEquipe.getSelectionModel().selectFirst();
 
         showAndWait();
     }
@@ -58,14 +50,13 @@ public class SupprimerJoueur  extends BaseFenetre {
      * ... l'élève et les résultats obtenus dans la BD
      */
     @FXML
-    private void BSupprimerJoueur()
+    private void BSupprimerEquipe()
     {
-        int idj = CBJoueurs.getSelectionModel().getSelectedItem().getIdj();
+        int ide = CBEquipe.getSelectionModel().getSelectedItem().getIde();
         try
         {
             FabDAO.getInstance().debuterTransaction();
-            FabDAO.getInstance().getEquipesDAO().supprimerviajoueur(idj);
-            FabDAO.getInstance().getJoueursDAO().supprimer(idj);
+            FabDAO.getInstance().getEquipesDAO().supprimer(ide);
             FabDAO.getInstance().validerTransaction();
         }
         catch(ExceptionAccesBD e)

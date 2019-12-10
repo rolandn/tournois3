@@ -13,17 +13,18 @@
     <children>
         <HBox spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <Label text="Choisissez un joueur : " />
-                <ComboBox fx:id="CBJoueurs" visibleRowCount="5" />
+                <Label text="Choisissez un joueur : "
+                       GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="CBJoueurs" visibleRowCount="5"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Button fx:id="BSupprimerJoueur" prefWidth="180" prefHeight="20" onAction="#BSupprimerJoueur"
+                        text="Supprimer" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Button fx:id="BFermer" prefWidth="180" prefHeight="20" onAction="#BFermer"
+                        text="Fermer" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
             </children>
+
         </HBox>
 
-        <HBox spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="4">
-            <children>
-                <Button fx:id="BSupprimerJoueur" prefWidth="180" prefHeight="20" onAction="#BSupprimerJoueur"
-                        text="Supprimer" />
-                <Button fx:id="BFermer" prefWidth="180" prefHeight="20" onAction="#BFermer" text="Fermer" />
-            </children>
-        </HBox>
     </children>
 </AnchorPane>
