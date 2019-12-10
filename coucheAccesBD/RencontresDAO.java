@@ -61,7 +61,7 @@ public class RencontresDAO extends BaseDAO<Rencontres>
      * @return la liste de toutes les rencontres
      */
 
-    public List<Rencontres> listerRencontresEquipe(int num) throws ExceptionAccesBD
+    public List<Rencontres> listerRencontresEquipe(int Ide) throws ExceptionAccesBD
     {
         ArrayList<Rencontres> liste = new ArrayList<Rencontres>();
         try
@@ -70,11 +70,11 @@ public class RencontresDAO extends BaseDAO<Rencontres>
                     " phase, NumEquipe1, NumEquipe2, " +
                     "NumArbitre, NumTable, NumGagnant, score " +
                     "from rencontres " +
-                    " where NumEquipe1 = ? OR NumEquipe2 = ?" +
+                    " where NumEquipe1 = ? OR NumEquipe2 = ? " +
                     "order by idr asc");
 
-            SqlCmd.setInt(1, num);
-            SqlCmd.setInt(2, num);
+            SqlCmd.setInt(1, Ide);
+            SqlCmd.setInt(2, Ide);
 
             ResultSet sqlRes = SqlCmd.executeQuery();
 

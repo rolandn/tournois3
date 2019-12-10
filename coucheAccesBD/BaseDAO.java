@@ -1,4 +1,7 @@
 package coucheAccesBD;
+import controleurs.ListerRencontres;
+import controleurs.ListerRencontresEquipe;
+
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,5 +42,8 @@ public abstract class BaseDAO<T>
         return null;
     }
 
-
+    public List<T> listerRencontresEquipe (int Ide) throws ExceptionAccesBD
+    {
+        return null;
+    }
 }

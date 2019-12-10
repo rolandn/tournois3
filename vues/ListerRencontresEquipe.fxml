@@ -10,50 +10,56 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
 
-            prefHeight="17000" prefWidth="7000">
+            prefHeight="170000" prefWidth="70000">
 
     <children>
 
         <Label text="Choisissez une équipe: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <ComboBox fx:id="CBIEquipe" GridPane.columnIndex="1" GridPane.rowIndex="0"
+        <ComboBox fx:id="CBIde" GridPane.columnIndex="1" GridPane.rowIndex="0"
                   visibleRowCount="6" />
 
-        <Separator GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <GridPane.columnSpan>2</GridPane.columnSpan>
+        <Separator GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <GridPane.columnSpan>3</GridPane.columnSpan>
         </Separator>
 
 
-                <TableView fx:id="TVRencontres" prefWidth="560" prefHeight ="640" AnchorPane.topAnchor="15"
+                <TableView fx:id="TVRencontres" prefWidth="760" prefHeight ="840" AnchorPane.topAnchor="20"
                            AnchorPane.leftAnchor="15">
                 <columns>
-                <TableColumn fx:id="TCIdr" text="Numéro" minWidth="50">
+                <TableColumn fx:id="TCIdr" text="Numéro" minWidth="60">
                     <cellValueFactory>
                         <PropertyValueFactory property="Idr" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="TCPhase" text="Phase" minWidth="75">
+                <TableColumn fx:id="TCPhase" text="Phase" minWidth="85">
                     <cellValueFactory>
                         <PropertyValueFactory property="Phase" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="TCNumEquipe1" text="NumEquipe1" minWidth="75">
+                <TableColumn fx:id="TCNumEquipe1" text="Equipe 1" minWidth="85">
                 <cellValueFactory>
                     <PropertyValueFactory property="NumEquipe1" />
                 </cellValueFactory>
-
                 </TableColumn>
-                    <TableColumn fx:id="TCNumEquipe2" text="TCNumEquipe2" minWidth="50">
+
+                <TableColumn fx:id="TCNumEquipe2" text="Equipe 2" minWidth="60">
                         <cellValueFactory>
-                            <PropertyValueFactory property="TCNumEquipe2" />
+                            <PropertyValueFactory property="NumEquipe2" />
+                        </cellValueFactory>
+                </TableColumn>
+
+                    <TableColumn fx:id="TCScore" text="Score" minWidth="60">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="Score" />
                         </cellValueFactory>
                     </TableColumn>
 
-
-
                 </columns>
                 </TableView>
+
+
 
         <Button fx:id="BFermer" prefWidth="180" prefHeight="20" onAction="#BFermer" text="Fermer"
                 AnchorPane.rightAnchor="15" AnchorPane.bottomAnchor="15" />

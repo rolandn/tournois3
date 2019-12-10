@@ -19,6 +19,9 @@ public class Equipes
 
     public int getJoueur2() {return Joueur2; }
 
+    @Override
+    public String toString() { return Ide + " " + Nom; }
+
     /**
      * propriété set... pour modifier la valeur des attributs
      */

@@ -80,29 +80,16 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
-    private void MModifierRencontres(ActionEvent event)
-    {
-        new ModifierRencontre(Fenetre);
-    }
-
+    private void MModifierRencontres(ActionEvent event) { new ModifierRencontre(Fenetre); }
 
     @FXML
-    private void MListerRencontres(ActionEvent event)
-    {
-        new ListerRencontres(Fenetre);
-    }
+    private void MListerRencontres(ActionEvent event) { new ListerRencontres(Fenetre); }
 
     @FXML
-    private void MListerRencontresEquipe(ActionEvent event)
-    {
-        new ListerRencontresEquipe(Fenetre);
-    }
+    private void MListerRencontresEquipe(ActionEvent event) { new ListerRencontresEquipe(Fenetre); }
 
     @FXML
-    private void MListerEquipes(ActionEvent event)
-    {
-        new ListerEquipes(Fenetre);
-    }
+    private void MListerEquipes(ActionEvent event) { new ListerEquipes(Fenetre); }
 
     @FXML
     private void MAjouterRencontres(ActionEvent event)
@@ -117,8 +104,6 @@ public class FenetrePrincipale extends Application
             return;
 
         }
-
-
     }
 
     @FXML
