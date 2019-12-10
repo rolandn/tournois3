@@ -80,6 +80,12 @@ public class FenetrePrincipale extends Application
     }
 
     @FXML
+    private void MSupprimerJoueur(ActionEvent event)
+    {
+        new SupprimerJoueur(Fenetre);
+    }
+
+    @FXML
     private void MModifierRencontres(ActionEvent event) { new ModifierRencontre(Fenetre); }
 
     @FXML

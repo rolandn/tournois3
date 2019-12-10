@@ -88,7 +88,7 @@ public class JoueursDAO extends BaseDAO<Joueurs>
         {
             SqlConn.setAutoCommit(false);
 
-            SqlCmd = SqlConn.prepareCall("delete from joueurs where idj = ?");
+            SqlCmd = SqlConn.prepareCall("delete from joueurs where idj = ? ");
             SqlCmd.setInt(1, num);
 
             SqlCmd.executeUpdate();

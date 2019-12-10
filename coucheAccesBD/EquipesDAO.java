@@ -88,8 +88,26 @@ public class EquipesDAO extends BaseDAO<Equipes>
         {
             SqlConn.setAutoCommit(false);
 
-            SqlCmd = SqlConn.prepareCall("delete from equipes where ide = ?");
+            SqlCmd = SqlConn.prepareCall("delete from equipes where ide = ? ");
             SqlCmd.setInt(1, num);
+
+            SqlCmd.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            throw new ExceptionAccesBD(e.getMessage());
+        }
+    }
+
+    public void supprimerviajoueur(int idj) throws ExceptionAccesBD
+    {
+        try
+        {
+            SqlConn.setAutoCommit(false);
+
+            SqlCmd = SqlConn.prepareCall("delete from equipes where Joueur1 = ? OR Joueur2 = ? ");
+            SqlCmd.setInt(1, idj);
+            SqlCmd.setInt(2, idj);
 
             SqlCmd.executeUpdate();
         }

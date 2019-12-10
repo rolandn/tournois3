@@ -26,7 +26,9 @@
                     <items>
                         <MenuItem text="Ajouter un joueur"  />
                         <MenuItem text="Ajouter une équipe" onAction="#MAjouterEquipe" />
-                        <MenuItem text="Ajouter un résultat" />
+                        <MenuItem text="Supprimer un joueur" onAction="#MSupprimerJoueur"/>
+
+
                     </items>
                 </Menu>
 
