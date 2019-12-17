@@ -1,8 +1,12 @@
 package controleurs;
 import classesMetier.*;
+import coucheMetier.CoucheMetier;
+import coucheMetier.CoucheMetier.*;
 import classesMetier.Equipes;
 import coucheAccesBD.*;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
+import coucheMetier.ExceptionMetier;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
@@ -91,13 +95,25 @@ public class ModifierRencontre extends BaseFenetre
     @FXML
     public void BModifierRencontreChoisie()
     {
-        Rencontres rencontres = new Rencontres();
-        rencontres.setNumGagnant(Integer.parseInt(TFNumGagnant.getText()));
+       // Rencontres rencontres = new Rencontres();
+        int var = Integer.parseInt(TFNumGagnant.getText());
+        Rencontres rencontres = new Rencontres(CBIdr.getSelectionModel().getSelectedItem());
+        rencontres.setNumGagnant((Integer.parseInt(TFNumGagnant.getText())));
 
-        rencontres.setScore(TFScore.getText());
-       // rencontres.setNumGagnant(2);
-        rencontres.setIdr(CBIdr.getSelectionModel().getSelectedItem().getIdr());
+        try {
+            CoucheMetier.getInstance().testerContrainteGagnant(rencontres);
+            rencontres.setScore(TFScore.getText());
+            //
+            // rencontres.setIdr(CBIdr.getSelectionModel().getSelectedItem().getIdr());
 
+        } catch (ExceptionMetier exceptionMetier) {
+            new MsgBox(this, AlertType.INFORMATION, "ERREUR",
+                    "Ce n'est pas une des deux équipes qui jouaient !");
+            return;
+
+        }
+
+       // rencontres.setIdr(CBIdr.getSelectionModel().getSelectedItem().getIdr());
         try
         {
             FabDAO.getInstance().debuterTransaction();

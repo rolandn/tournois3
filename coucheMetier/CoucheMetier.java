@@ -158,18 +158,29 @@ public class CoucheMetier {
 
     /**
      * méthode qui teste si un n° d'équipe gagnant est valide
-     * @param gagnant : int = id équipe gagante
+     * @param  : int = id équipe gagante
      * @return un résultat validé
      */
-    public Rencontres testerContrainteGagnant(int gagnant) throws ExceptionMetier
+    public void testerContrainteGagnant(Rencontres rencontres) throws ExceptionMetier
     {
 
-        Rencontres rencontres = new Rencontres();
 
-        if (rencontres.getNumEquipe1()!= gagnant || rencontres.getNumEquipe2()!= gagnant)
-            throw new ExceptionMetier("Ce n'est pas une des deux équipes qui jouaient ensemble !");
-        rencontres.setNumGagnant(gagnant);
+        if (rencontres.getNumEquipe1()!= rencontres.getNumGagnant())
+            if(rencontres.getNumEquipe2()!= rencontres.getNumGagnant())
+                       throw new ExceptionMetier("ERREUR " +
+                               "Ce n'est pas une des deux équipes qui jouaient ensemble !");
 
-     return rencontres;
+
+
+    }
+
+    public void testerContrainteEquipe (int ide) throws ExceptionMetier
+    {
+        if (coucheAccesBD.RencontresDAO.listerRencontresEquipe(int ide))
+
+                throw new ExceptionMetier("ERREUR " +
+                        "Il y a déjà une rencontre qui implique cette équipe !");
+
+
     }
 }

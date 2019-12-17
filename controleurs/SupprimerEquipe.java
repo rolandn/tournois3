@@ -3,6 +3,8 @@ package controleurs;
 import classesMetier.Equipes;
 import coucheAccesBD.ExceptionAccesBD;
 import coucheAccesBD.FabDAO;
+import coucheMetier.CoucheMetier;
+import coucheMetier.ExceptionMetier;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,9 +57,22 @@ public class SupprimerEquipe extends BaseFenetre {
         int ide = CBEquipe.getSelectionModel().getSelectedItem().getIde();
         try
         {
-            FabDAO.getInstance().debuterTransaction();
-            FabDAO.getInstance().getEquipesDAO().supprimer(ide);
-            FabDAO.getInstance().validerTransaction();
+            try {
+                CoucheMetier.getInstance().testerContrainteEquipe(ide);
+                FabDAO.getInstance().debuterTransaction();
+                FabDAO.getInstance().getEquipesDAO().supprimer(ide);
+                FabDAO.getInstance().validerTransaction();
+            } catch (ExceptionMetier e) {
+                try
+                {
+                    FabDAO.getInstance().annulerTransaction();
+                }
+                catch(ExceptionAccesBD ex)
+                {
+                }
+                new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
+            }
+
         }
         catch(ExceptionAccesBD e)
         {

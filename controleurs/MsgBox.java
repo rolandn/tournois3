@@ -17,20 +17,20 @@ public class MsgBox extends BaseFenetre
      */
     public MsgBox(Stage fenParent, AlertType typeErreur, String msgTitre, String msgErreur)
     {
-        super(fenParent, "MsgBoxVue.fxml", "", 1470, 1100);
+        super(fenParent, "MsgBoxVue.fxml", "ERREUR", 870, 100);
 
 // fixer l'image et le message dans la fenêtre
         if(typeErreur == AlertType.INFORMATION)
         {
-            IVImage.setImage(new Image("file:imgs/imgsmsgbox/information.jpg"));
+          //  IVImage.setImage(new Image("file:imgs/imgsmsgbox/information.jpg"));
         }
         else if(typeErreur == AlertType.WARNING)
         {
-            IVImage.setImage(new Image("file:imgs/imgsmsgbox/attention.jpg"));
+          //  IVImage.setImage(new Image("file:imgs/imgsmsgbox/attention.jpg"));
         }
         else if(typeErreur == AlertType.ERROR)
         {
-            IVImage.setImage(new Image("file:imgs/imgsmsgbox/erreur.jpg"));
+          //  IVImage.setImage(new Image("file:imgs/imgsmsgbox/erreur.jpg"));
         }
 
         setTitle(msgTitre);
