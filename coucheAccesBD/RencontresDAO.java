@@ -159,6 +159,22 @@ public class RencontresDAO extends BaseDAO<Rencontres>
         }
     }
 
+    public void toutSupprimer() throws ExceptionAccesBD
+    {
+        try
+        {
+            SqlConn.setAutoCommit(false);
+
+            SqlCmd = SqlConn.prepareCall(" delete from rencontres ");
+
+            SqlCmd.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            throw new ExceptionAccesBD(e.getMessage());
+        }
+    }
+
     /**
      * méthode qui modifie dans la base de données une rencontre
      * @param obj : la rencontre

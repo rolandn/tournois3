@@ -57,98 +57,108 @@ public class CoucheMetier {
             List<Tables> tables = FabDAO.getInstance().getTablesDAO().listerTous();
             List<Arbitres> arbitres = FabDAO.getInstance().getArbitreDAO().listerTous();
 
-            if (rencontres2.size() == 0) {
-                q = "Quart";
-
-                while (equipes.size() > 0) {
-                    Rencontres rencontres = new Rencontres();
-                    rencontres.setPhase(q);
-
-                    NbrRandom = R.nextInt(tables.size());
-                    rencontres.setNumTable(tables.get(NbrRandom).getIdt());
-                    tables.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(arbitres.size());
-                    rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
-                    arbitres.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(equipes.size());
-                    rencontres.setNumEquipe1(equipes.size());
-                    equipes.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(equipes.size());
-                    rencontres.setNumEquipe2(equipes.size());
-                    equipes.remove(NbrRandom);
-
-                    FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
-
-                    // ajouter transaction pour mettre 4 ou 0 rencontres.
-
-                }
-            }
-
-            else if (rencontres2.size() == 4)
-            {
-            d = "Demi finale";
-            List<Rencontres> gagants_quart = FabDAO.getInstance().getEquipesQuartDAO().listerTous();
-
-                while (gagants_quart.size() > 0) {
-                    Rencontres rencontres = new Rencontres();
-                    rencontres.setPhase(d);
-
-                    NbrRandom = R.nextInt(tables.size());
-                    rencontres.setNumTable(tables.get(NbrRandom).getIdt());
-                    tables.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(arbitres.size());
-                    rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
-                    arbitres.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(gagants_quart.size());
-                    rencontres.setNumEquipe1(gagants_quart.get(NbrRandom).getNumGagnant());
-                    gagants_quart.remove(NbrRandom);
-
-                    NbrRandom = R.nextInt(gagants_quart.size());
-                    rencontres.setNumEquipe2(gagants_quart.get(NbrRandom).getNumGagnant());
-                    gagants_quart.remove(NbrRandom);
-
-                    FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
-
-                    // ajouter transaction pour mettre 4 ou 0 rencontres.
-
-                }
+            if (rencontres2.size() == 7) {
+                FabDAO.getInstance().getRencontresDAO().toutSupprimer();
             }
 
             else {
-                f = "Finale";
-                List<Rencontres> gagants_demi = FabDAO.getInstance().getEquipesDemiDAO().listerTous();
+                if (rencontres2.size() < 4) {
 
-                while (gagants_demi.size() > 0) {
-                    Rencontres rencontres = new Rencontres();
-                    rencontres.setPhase(f);
+                    List<Rencontres> debut = FabDAO.getInstance().getRencontresDAO().listerTous();
+                    q = "Quart";
 
-                    NbrRandom = R.nextInt(tables.size());
-                    rencontres.setNumTable(tables.get(NbrRandom).getIdt());
-                    tables.remove(NbrRandom);
+                    while (debut.size() > 0 && rencontres2.size() < 5) {
+                        Rencontres rencontres = new Rencontres();
+                        rencontres.setPhase(q);
 
-                    NbrRandom = R.nextInt(arbitres.size());
-                    rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
-                    arbitres.remove(NbrRandom);
+                        NbrRandom = R.nextInt(tables.size());
+                        rencontres.setNumTable(tables.get(NbrRandom).getIdt());
+                        tables.remove(NbrRandom);
 
-                    NbrRandom = R.nextInt(gagants_demi.size());
-                    rencontres.setNumEquipe1(gagants_demi.get(NbrRandom).getNumGagnant());
-                    gagants_demi.remove(NbrRandom);
+                        NbrRandom = R.nextInt(arbitres.size());
+                        rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
+                        arbitres.remove(NbrRandom);
 
-                    NbrRandom = R.nextInt(gagants_demi.size());
-                    rencontres.setNumEquipe2(gagants_demi.get(NbrRandom).getNumGagnant());
-                    gagants_demi.remove(NbrRandom);
+                        NbrRandom = R.nextInt(equipes.size());
+                        rencontres.setNumEquipe1(equipes.size());
+                        equipes.remove(NbrRandom);
 
-                    FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
+                        NbrRandom = R.nextInt(equipes.size());
+                        rencontres.setNumEquipe2(equipes.size());
+                        equipes.remove(NbrRandom);
 
-                    // ajouter transaction pour mettre 4 ou 0 rencontres.
+                        FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
 
+                        // ajouter transaction pour mettre 4 ou 0 rencontres.
+
+                    }
+                }
+
+                else if (rencontres2.size() == 4)
+                {
+                    d = "Demi finale";
+                    List<Rencontres> gagants_quart = FabDAO.getInstance().getEquipesQuartDAO().listerTous();
+
+                    while (gagants_quart.size() > 0) {
+                        Rencontres rencontres = new Rencontres();
+                        rencontres.setPhase(d);
+
+                        NbrRandom = R.nextInt(tables.size());
+                        rencontres.setNumTable(tables.get(NbrRandom).getIdt());
+                        tables.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(arbitres.size());
+                        rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
+                        arbitres.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(gagants_quart.size());
+                        rencontres.setNumEquipe1(gagants_quart.get(NbrRandom).getNumGagnant());
+                        gagants_quart.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(gagants_quart.size());
+                        rencontres.setNumEquipe2(gagants_quart.get(NbrRandom).getNumGagnant());
+                        gagants_quart.remove(NbrRandom);
+
+                        FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
+
+                        // ajouter transaction pour mettre 4 ou 0 rencontres.
+
+                    }
+                }
+
+                else {
+                    f = "Finale";
+                    List<Rencontres> gagants_demi = FabDAO.getInstance().getEquipesDemiDAO().listerTous();
+
+                    while (gagants_demi.size() > 0) {
+                        Rencontres rencontres = new Rencontres();
+                        rencontres.setPhase(f);
+
+                        NbrRandom = R.nextInt(tables.size());
+                        rencontres.setNumTable(tables.get(NbrRandom).getIdt());
+                        tables.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(arbitres.size());
+                        rencontres.setNumArbitre(arbitres.get(NbrRandom).getIda());
+                        arbitres.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(gagants_demi.size());
+                        rencontres.setNumEquipe1(gagants_demi.get(NbrRandom).getNumGagnant());
+                        gagants_demi.remove(NbrRandom);
+
+                        NbrRandom = R.nextInt(gagants_demi.size());
+                        rencontres.setNumEquipe2(gagants_demi.get(NbrRandom).getNumGagnant());
+                        gagants_demi.remove(NbrRandom);
+
+                        FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
+
+                        // ajouter transaction pour mettre 4 ou 0 rencontres.
+
+                    }
                 }
             }
+
+
         }
         catch (Exception e)
         {
@@ -176,11 +186,34 @@ public class CoucheMetier {
 
     public void testerContrainteEquipe (int ide) throws ExceptionMetier
     {
-        if (coucheAccesBD.RencontresDAO.listerRencontresEquipe(int ide))
+        try {
+            List<Rencontres> list = FabDAO.getInstance().getRencontresDAO().listerRencontresEquipe(ide);
 
+            if(list != null)
                 throw new ExceptionMetier("ERREUR " +
-                        "Il y a déjà une rencontre qui implique cette équipe !");
-
-
+                        "Cet équipe est impliquée dans le tournois !");
+            else
+                FabDAO.getInstance().getEquipesDAO().supprimer(ide);
+        }
+        catch (ExceptionAccesBD exceptionAccesBD) {
+            exceptionAccesBD.printStackTrace();
+        }
     }
+    public void testerContrainteJoueur (int idj) throws ExceptionMetier
+    {
+        try {
+            List<Equipes> list = FabDAO.getInstance().getEquipesDAO().chercherEquipe(idj);
+
+            if(list.size() != 0)
+                throw new ExceptionMetier("ERREUR " +
+                        "Ce joueur appartient déjà à une équipe !");
+            else
+                FabDAO.getInstance().getJoueursDAO().supprimer(idj);
+
+        }
+        catch (ExceptionAccesBD exceptionAccesBD) {
+            exceptionAccesBD.printStackTrace();
+        }
+    }
+
 }

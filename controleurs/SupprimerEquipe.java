@@ -55,14 +55,14 @@ public class SupprimerEquipe extends BaseFenetre {
     private void BSupprimerEquipe()
     {
         int ide = CBEquipe.getSelectionModel().getSelectedItem().getIde();
-        try
-        {
+
             try {
                 CoucheMetier.getInstance().testerContrainteEquipe(ide);
                 FabDAO.getInstance().debuterTransaction();
-                FabDAO.getInstance().getEquipesDAO().supprimer(ide);
+              //  FabDAO.getInstance().getEquipesDAO().supprimer(ide);
                 FabDAO.getInstance().validerTransaction();
-            } catch (ExceptionMetier e) {
+            }
+            catch (ExceptionMetier e) {
                 try
                 {
                     FabDAO.getInstance().annulerTransaction();
@@ -73,19 +73,18 @@ public class SupprimerEquipe extends BaseFenetre {
                 new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
             }
 
-        }
-        catch(ExceptionAccesBD e)
-        {
-            try
+            catch(ExceptionAccesBD e)
             {
-                FabDAO.getInstance().annulerTransaction();
+                try
+                {
+                    FabDAO.getInstance().annulerTransaction();
+                }
+                catch(ExceptionAccesBD ex)
+                {
+                }
+                new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
             }
-            catch(ExceptionAccesBD ex)
-            {
-            }
-            new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
-        }
-        close();
+            close();
 
     }
     /**

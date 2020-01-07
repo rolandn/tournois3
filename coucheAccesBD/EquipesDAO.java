@@ -118,5 +118,32 @@ public class EquipesDAO extends BaseDAO<Equipes>
     }
 
 
+    public List<Equipes> chercherEquipe(int idj) throws ExceptionAccesBD
+    {
+        ArrayList<Equipes> liste = new ArrayList<Equipes>();
+        try
+        {
+            SqlConn.setAutoCommit(false);
+
+            SqlCmd = SqlConn.prepareCall("select ide, nom, joueur1, joueur2 from equipe where joueur1 = ? OR joueur2 = ? ");
+            SqlCmd.setInt(1, idj);
+            SqlCmd.setInt(2, idj);
+            ResultSet sqlRes = SqlCmd.executeQuery();
+
+            while (sqlRes.next() == true)
+                liste.add(new Equipes(sqlRes.getInt(1),
+                        sqlRes.getString(2),
+                        sqlRes.getInt(3),
+                        sqlRes.getInt(4)));
+            sqlRes.close();
+        }
+        catch(Exception e)
+        {
+            throw new ExceptionAccesBD(e.getMessage());
+        }
+        return liste;
+    }
+
+
 
 }

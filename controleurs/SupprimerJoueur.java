@@ -8,6 +8,8 @@ import coucheAccesBD.RencontresDAO;
 import coucheAccesBD.EquipesDAO;
 import coucheAccesBD.ExceptionAccesBD;
 import coucheAccesBD.FabDAO;
+import coucheMetier.CoucheMetier;
+import coucheMetier.ExceptionMetier;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,11 +65,23 @@ public class SupprimerJoueur  extends BaseFenetre {
         int idj = CBJoueurs.getSelectionModel().getSelectedItem().getIdj();
         try
         {
+            CoucheMetier.getInstance().testerContrainteJoueur(idj);
             FabDAO.getInstance().debuterTransaction();
-            FabDAO.getInstance().getEquipesDAO().supprimerviajoueur(idj);
-            FabDAO.getInstance().getJoueursDAO().supprimer(idj);
+          //  FabDAO.getInstance().getEquipesDAO().supprimerviajoueur(idj);
+          //  FabDAO.getInstance().getJoueursDAO().supprimer(idj);
             FabDAO.getInstance().validerTransaction();
         }
+        catch (ExceptionMetier e) {
+            try
+            {
+                FabDAO.getInstance().annulerTransaction();
+            }
+            catch(ExceptionAccesBD ex)
+            {
+            }
+            new MsgBox(this, AlertType.ERROR, "Erreur d'accès à la base de données", e.getMessage());
+        }
+
         catch(ExceptionAccesBD e)
         {
             try
