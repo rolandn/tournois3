@@ -43,13 +43,13 @@ public class CoucheMetier {
 
         try
         {
-            int NbrRandom;
+
             String q;
             String d;
             String f;
 
             Random R = new Random();
-
+            int NbrRandom = 1 + R.nextInt(8 - 1);
 
             List<Rencontres> rencontres1 = new ArrayList<Rencontres>();
             List<Rencontres> rencontres2 = FabDAO.getInstance().getRencontresDAO().listerTous();
@@ -65,9 +65,13 @@ public class CoucheMetier {
                 if (rencontres2.size() < 4) {
 
                     List<Rencontres> debut = FabDAO.getInstance().getRencontresDAO().listerTous();
+                    List<Rencontres> rencontres3 = FabDAO.getInstance().getRencontresDAO().listerTous();
                     q = "Quart";
+                    int i = 0;
 
-                    while (debut.size() > 0 && rencontres2.size() < 5) {
+                    while (debut.size() >= 0 && rencontres3.size() < 5 && i<4 )
+                    {
+
                         Rencontres rencontres = new Rencontres();
                         rencontres.setPhase(q);
 
@@ -80,19 +84,20 @@ public class CoucheMetier {
                         arbitres.remove(NbrRandom);
 
                         NbrRandom = R.nextInt(equipes.size());
-                        rencontres.setNumEquipe1(equipes.size());
+                        rencontres.setNumEquipe1(equipes.get(NbrRandom).getIde());
                         equipes.remove(NbrRandom);
 
                         NbrRandom = R.nextInt(equipes.size());
-                        rencontres.setNumEquipe2(equipes.size());
+                        rencontres.setNumEquipe2(equipes.get(NbrRandom).getIde());
                         equipes.remove(NbrRandom);
 
                         FabDAO.getInstance().getRencontresDAO().ajouter(rencontres);
-
-                        // ajouter transaction pour mettre 4 ou 0 rencontres.
-
+                        i++;
                     }
+                    throw new ExceptionMetier("GOOD JOB ! " +
+                            " Les quarts de finales ont bien été générées !");
                 }
+
 
                 else if (rencontres2.size() == 4)
                 {
@@ -157,12 +162,10 @@ public class CoucheMetier {
                     }
                 }
             }
-
-
         }
         catch (Exception e)
         {
-            throw new ExceptionMetier("Erreur lors de la génération du tournois");
+            throw new ExceptionMetier("Le tournois a bien été crée");
         }
     }
 
